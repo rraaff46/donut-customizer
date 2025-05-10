@@ -17,7 +17,6 @@ const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-
 // Orbit controls
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
@@ -44,7 +43,7 @@ scene.add(ambientLight, directionalLight);
 let donutModel;
 let icingMesh;
 const loader = new GLTFLoader();
-loader.load('/models/donut.gltf', (gltf) => {
+loader.load('models/donut.gltf', (gltf) => {
     donutModel = gltf.scene;
     donutModel.position.set(0, 0, 0);
     donutModel.scale.set(1.5, 1.5, 1.5);
