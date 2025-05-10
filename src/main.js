@@ -21,7 +21,7 @@ document.body.appendChild(renderer.domElement);
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.autoRotate = true;
-controls.autoRotateSpeed = 0.5;
+controls.autoRotateSpeed = 0.75;
 controls.enablePan = false;
 
 // Lights
@@ -34,15 +34,27 @@ helpLight.visible = false; // Start hidden for debug mode
 scene.add(helpLight);
 
 const gridHelper = new THREE.GridHelper(10, 10);
-gridHelper.visible = true;
+gridHelper.visible = false;
 scene.add(gridHelper);
 
 scene.add(ambientLight, directionalLight);
 
+
 // Donut model
+
+const manager = new THREE.LoadingManager()
+
+
+manager.onLoad = () => {
+    setTimeout(() => {
+        document.getElementById('loader').classList.add('hidden');
+    }, 1000); // 3 seconds
+}
+
+
 let donutModel;
 let icingMesh;
-const loader = new GLTFLoader();
+const loader = new GLTFLoader(manager);
 loader.load('models/donut.gltf', (gltf) => {
     donutModel = gltf.scene;
     donutModel.position.set(0, 0, 0);
@@ -61,7 +73,7 @@ loader.load('models/donut.gltf', (gltf) => {
 });
 
 
-// Event listeners and handlers
+// Event listeners, handlers and DOM manipulation
 window.addEventListener('resize', onWindowResize, false);
 function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
@@ -88,6 +100,9 @@ buttons.forEach((btn) => {
     });
 });
 
+document.getElementById('close-hint')?.addEventListener('click', () => {
+    document.getElementById('debug-hint').style.display = 'none';
+});
 
 
 
@@ -97,10 +112,10 @@ buttons.forEach((btn) => {
 function animate() {
     requestAnimationFrame(animate);
 
-    if (donutModel) {
-        donutModel.rotation.y += 0.004;
-        donutModel.rotation.x += 0.004;
-    }
+    // if (donutModel) {
+    //     donutModel.rotation.y += 0.004;
+    //     donutModel.rotation.x += 0.004;
+    // }
     controls.update();
     renderer.render(scene, camera);
 }
