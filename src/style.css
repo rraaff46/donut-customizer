@@ -12,7 +12,6 @@ html, body {
 }
 
 
-/* === Loader === */
 #loader {
   position: fixed;
   top: 0;
@@ -47,7 +46,6 @@ html, body {
 }
 
 
-/* === UI Buttons === */
 #color-ui {
   position: absolute;
   top: 20px;
@@ -78,25 +76,163 @@ html, body {
 .color-buttons button:nth-child(1) {
   background: #ff66cc;
   color: white;
+  width: 100%;
+  transition: all 0.2s ease;
+  transform: translateY(0);
+}
+.color-buttons button:nth-child(1):hover  {
+  background: #ed60ba;
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.color-buttons button:nth-child(1):active {
+  transform: translateY(1px);
+  box-shadow: none;
 }
 
 .color-buttons button:nth-child(2) {
   background: #996633;
   color: white;
+  width: 100%;
+  transition: all 0.2s ease;
+  transform: translateY(0);
+}
+.color-buttons button:nth-child(2):hover {
+  background: #885e2e;
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.color-buttons button:nth-child(2):active {
+  transform: translateY(1px);
+  box-shadow: none;
 }
 
 .color-buttons button:nth-child(3) {
   background: #fceabb;
   color: #333;
+  transition: all 0.2s ease;
+  transform: translateY(0);
 }
 
+.color-buttons button:nth-child(3):hover {
+  background: #f9e19d;
+  color: #333;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.color-buttons button:nth-child(3):active {
+  transform: translateY(1px);
+  box-shadow: none;
+
+}
+
+.sprinkle-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+/* General sprinkle button styling */
+.sprinkle-buttons button {
+  padding: 0.5em 1em;
+  font-family: sans-serif;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+  transition: all 0.2s ease;
+  transform: translateY(0);
+}
+
+/* White */
+.sprinkle-buttons button:nth-child(1) {
+  background: #ffffff;
+  color: #222;
+}
+.sprinkle-buttons button:nth-child(1):hover {
+  background: #f2f2f2;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.sprinkle-buttons button:nth-child(1):active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+/* Black */
+.sprinkle-buttons button:nth-child(2) {
+  background: #000000;
+  color: white;
+}
+.sprinkle-buttons button:nth-child(2):hover {
+  background: #222222;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.sprinkle-buttons button:nth-child(2):active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+/* Pink */
+.sprinkle-buttons button:nth-child(3) {
+  background: #ff00ff;
+  color: white;
+}
+.sprinkle-buttons button:nth-child(3):hover {
+  background: #e500e5;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.sprinkle-buttons button:nth-child(3):active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
 #toggle-sprinkles {
   background: #d47fff;
   color: white;
+  width: 100%;
+  transition: all 0.2s ease;
+  transform: translateY(0);
+}
+
+#toggle-sprinkles:hover {
+  background: #c068ec;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#toggle-sprinkles:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+#save-screenshot {
+  background: #5c46f5;
+  color: white;
+  width: 100%;
+  transition: all 0.2s ease;
+  transform: translateY(0);
+}
+
+#save-screenshot:hover {
+  background: #4936cc;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#save-screenshot:active {
+  transform: translateY(1px);
+  box-shadow: none;
 }
 
 
-/* === Debug Hint === */
+
 #debug-hint {
   position: fixed;
   bottom: 10px;
