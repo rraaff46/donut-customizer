@@ -16,10 +16,16 @@
 
 <script type="module" src="/src/main.js"></script>
 <div id="color-ui">
-    <button data-color="#ff66cc">Strawberry</button>
-    <button data-color="#996633">Chocolate</button>
-    <button data-color="#fceabb">Vanilla</button>
+    <div class="button-column">
+        <div class="color-buttons">
+            <button data-color="#ff66cc">Strawberry</button>
+            <button data-color="#996633">Chocolate</button>
+            <button data-color="#fceabb">Vanilla</button>
+        </div>
+        <button id="toggle-sprinkles">Toggle Sprinkles</button>
+    </div>
 </div>
+
 
 <div id="debug-hint">
     <span>Press G for Debug View</span>

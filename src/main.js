@@ -1,7 +1,7 @@
 import './style.css'
 import * as THREE from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
+import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 const scene = new THREE.Scene();
 
@@ -13,7 +13,7 @@ const camera = new THREE.PerspectiveCamera(
     1000
 );
 camera.position.set(0, 0.75, 1);
-const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+const renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
@@ -48,12 +48,14 @@ const manager = new THREE.LoadingManager()
 manager.onLoad = () => {
     setTimeout(() => {
         document.getElementById('loader').classList.add('hidden');
-    }, 1000); // 3 seconds
+    }, 20); // 3 seconds
 }
 
 
 let donutModel;
 let icingMesh;
+let sprinklesMesh;
+
 const loader = new GLTFLoader(manager);
 loader.load('models/donut.gltf', (gltf) => {
     donutModel = gltf.scene;
@@ -72,9 +74,18 @@ loader.load('models/donut.gltf', (gltf) => {
     });
 });
 
+loader.load('models/sprinkles.gltf', (gltf) => {
+    sprinklesMesh = gltf.scene;
+    sprinklesMesh.visible = true; // start hidden
+    sprinklesMesh.position.set(0, .003, 0);
+    sprinklesMesh.scale.set(1.51, 1.51, 1.51);
+    scene.add(sprinklesMesh);
+});
+
 
 // Event listeners, handlers and DOM manipulation
 window.addEventListener('resize', onWindowResize, false);
+
 function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
@@ -104,7 +115,11 @@ document.getElementById('close-hint')?.addEventListener('click', () => {
     document.getElementById('debug-hint').style.display = 'none';
 });
 
-
+document.getElementById('toggle-sprinkles')?.addEventListener('click', () => {
+    if (sprinklesMesh) {
+        sprinklesMesh.visible = !sprinklesMesh.visible;
+    }
+});
 
 
 // Functions
@@ -119,4 +134,5 @@ function animate() {
     controls.update();
     renderer.render(scene, camera);
 }
+
 animate();

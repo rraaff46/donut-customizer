@@ -1,7 +1,3 @@
-body {
-  background-color: #eba4ff;
-}
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -10,11 +6,13 @@ body {
 
 html, body {
   height: 100%;
-  overflow: hidden; /* 💡 prevents scrollbars */
+  overflow: hidden;
   font-family: sans-serif;
+  background-color: #eba4ff;
 }
 
 
+/* === Loader === */
 #loader {
   position: fixed;
   top: 0;
@@ -49,13 +47,23 @@ html, body {
 }
 
 
+/* === UI Buttons === */
 #color-ui {
   position: absolute;
   top: 20px;
   left: 20px;
+  z-index: 10;
+}
+
+.button-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.color-buttons {
   display: flex;
   gap: 10px;
-  z-index: 10;
 }
 
 #color-ui button {
@@ -65,14 +73,30 @@ html, body {
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
+}
+
+.color-buttons button:nth-child(1) {
+  background: #ff66cc;
   color: white;
 }
 
-#color-ui button:nth-child(1) { background: #ff66cc; }
-#color-ui button:nth-child(2) { background: #996633; }
-#color-ui button:nth-child(3) { background: #fceabb; color: #333; }
+.color-buttons button:nth-child(2) {
+  background: #996633;
+  color: white;
+}
+
+.color-buttons button:nth-child(3) {
+  background: #fceabb;
+  color: #333;
+}
+
+#toggle-sprinkles {
+  background: #d47fff;
+  color: white;
+}
 
 
+/* === Debug Hint === */
 #debug-hint {
   position: fixed;
   bottom: 10px;
@@ -104,4 +128,3 @@ html, body {
 #close-hint:hover {
   color: #ff8888;
 }
-
